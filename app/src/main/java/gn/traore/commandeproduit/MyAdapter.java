@@ -58,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 editor.commit();
 
                 // On incrémente le nombre de produit à commander
-                MainActivity.btnNbreProdSelect.setText(String.valueOf(++nbreProduit));
+                GestionProduit.btnNbreProdSelect.setText(String.valueOf(++nbreProduit));
 
                 Toast.makeText(context, jsonProduit+"", Toast.LENGTH_LONG).show();
             }
