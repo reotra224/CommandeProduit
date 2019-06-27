@@ -1,4 +1,4 @@
-package gn.traore.commandeproduit;
+package gn.traore.commandeproduit.model;
 
 import java.io.Serializable;
 
@@ -7,6 +7,7 @@ public class Produit implements Serializable {
     private String image;
     private String titre;
     private Double prix;
+    private String description;
 
     public Produit() { }
 
@@ -14,6 +15,13 @@ public class Produit implements Serializable {
         this.image = image;
         this.titre = titre;
         this.prix = prix;
+    }
+
+    public Produit(String titre, String image, Double prix, String description) {
+        this.image = image;
+        this.titre = titre;
+        this.prix = prix;
+        this.description = description;
     }
 
     public String getImage() {
@@ -38,5 +46,13 @@ public class Produit implements Serializable {
 
     public void setPrix(Double prix) {
         this.prix = prix;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
