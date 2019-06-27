@@ -15,18 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import gn.traore.commandeproduit.model.Produit;
+import gn.traore.commandeproduit.model.ProduitPanier;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    private List<Produit> list;
+    private List<Produit> listProduits;
+    public static List<ProduitPanier> paniers = new ArrayList<>();
     private Context context;
     private int nbreProduit;
 
-    public MyAdapter(List<Produit> list, Context context) {
-        this.list = list;
+    public MyAdapter(List<Produit> listProduits, Context context) {
+        this.listProduits = listProduits;
         this.context = context;
         this.nbreProduit = 0;
     }
@@ -40,12 +45,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final Produit produit = list.get(position);
+        final Produit produit = listProduits.get(position);
         holder.bind(produit);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // On enregistre le produit dans un fichier partagé servant de panier
+
+                //On ajoute le produit sélectionné dans le panier
+                ajoutProduitAuPanier(produit);
+
+                /*// On enregistre le produit dans un fichier partagé servant de panier
                 SharedPreferences mPreferences = context.getSharedPreferences("PANIER_PRODUITS", MODE_PRIVATE);
                 SharedPreferences.Editor editor = mPreferences.edit();
 
@@ -55,19 +64,48 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 //On ajoute dans le panier
                 editor.putString("PRODUIT", jsonProduit);
-                editor.commit();
+                editor.commit();*/
 
                 // On incrémente le nombre de produit à commander
                 GestionProduit.btnNbreProdSelect.setText(String.valueOf(++nbreProduit));
-
-                Toast.makeText(context, jsonProduit+"", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    /**
+     * Permet d'ajouter un produit dans le panier
+     * @param produit
+     */
+    private void ajoutProduitAuPanier(@NonNull Produit produit) {
+        boolean verif = false;
+        //On vérifi que le panier n'est pas null
+        if (paniers != null || paniers.size() > 0) {
+            //On recherche une occurence du produit sélectionné dans le panier
+            for (ProduitPanier pp: paniers) {
+                //Si on n'en trouve
+                if (pp.getProduit_panier().getTitre().equals(produit.getTitre())) {
+                    //On augmente la quantité
+                    pp.setQuantite_produit_panier(pp.getQuantite_produit_panier() + 1);
+                    verif = true;
+                    Toast.makeText(context, "Existe déjà dans le panier", Toast.LENGTH_SHORT).show();
+                }
+            }
+            //Si le produit n'existe pas encore dans le panier, on l'ajoute
+            if (!verif) {
+                //On crée une instance du Produit panier
+                ProduitPanier pp = new ProduitPanier(produit, 1);
+                //On l'ajoute au panier
+                paniers.add(pp);
+                Toast.makeText(context, "N'existe pas dans le panier !" + verif, Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(context, "Pas de panier", Toast.LENGTH_LONG).show();
+        }
+    }
+
     @Override
     public int getItemCount() {
-        return list.size();
+        return listProduits.size();
     }
 
     public int getNbreProduit() {

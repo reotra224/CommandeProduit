@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import gn.traore.commandeproduit.model.Produit;
 
 public class GestionProduit extends AppCompatActivity {
 
@@ -34,6 +41,10 @@ public class GestionProduit extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         btnNbreProdSelect = findViewById(R.id.btnNbreProd);
         btnNbreProdSelect.setText(String.valueOf(myAdapter.getNbreProduit()));
+        btnCommande = findViewById(R.id.btnCommande);
+
+        //On ajoute un OnClickListener sur les boutons
+        ajoutOnClickListenerSurLesBoutons();
 
         //définit l'agencement des cellules, ici de façon verticale, comme une ListView
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,9 +52,33 @@ public class GestionProduit extends AppCompatActivity {
         //pour adapter en grille comme une RecyclerView, avec 2 cellules par ligne
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
-        //puis créer un MyAdapter, lui fournir notre liste de villes.
         //cet adapter servira à remplir notre recyclerview
         recyclerView.setAdapter(myAdapter);
+    }
+
+    private void ajoutOnClickListenerSurLesBoutons() {
+        btnNbreProdSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (MyAdapter.paniers.size() > 0) {
+                    Intent intent = new Intent(GestionProduit.this, Panier.class);
+                    //On converti le produit en json
+                    Gson gson = new Gson();
+                    String produitsPanier = gson.toJson(MyAdapter.paniers);
+                    intent.putExtra("LISTE_PRODUITS_PANIER", produitsPanier);
+                    startActivity(intent);
+                } else
+                    Toast.makeText(GestionProduit.this, "Votre panier est vide !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnCommande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(GestionProduit.this, "Passer la commande !", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void ajouterVilles() {

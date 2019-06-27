@@ -9,6 +9,11 @@ public class ProduitPanier implements Serializable {
 
     public ProduitPanier() {}
 
+    public ProduitPanier(Produit produit_panier, int quantite_produit_panier) {
+        this.produit_panier = produit_panier;
+        this.quantite_produit_panier = quantite_produit_panier;
+    }
+
     public Produit getProduit_panier() {
         return produit_panier;
     }
