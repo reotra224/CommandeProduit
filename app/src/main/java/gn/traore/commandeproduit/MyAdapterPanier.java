@@ -46,7 +46,7 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listProduitsPanier.size();
     }
 
     public class ViewHolderPanier extends RecyclerView.ViewHolder {
