@@ -68,8 +68,9 @@ public class GestionProduit extends AppCompatActivity {
                     String produitsPanier = gson.toJson(MyAdapter.paniers);
                     intent.putExtra("LISTE_PRODUITS_PANIER", produitsPanier);
                     startActivity(intent);
-                } else
+                } else {
                     Toast.makeText(GestionProduit.this, "Votre panier est vide !", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -82,12 +83,12 @@ public class GestionProduit extends AppCompatActivity {
     }
 
     private void ajouterVilles() {
-        cities.add(new Produit("France","http://www.telegraph.co.uk/travel/destination/article130148.ece/ALTERNATES/w620/parisguidetower.jpg", 1500.0));
-        cities.add(new Produit("Angleterre","http://www.traditours.com/images/Photos%20Angleterre/ForumLondonBridge.jpg", 1500.0));
-        cities.add(new Produit("Allemagne","http://tanned-allemagne.com/wp-content/uploads/2012/10/pano_rathaus_1280.jpg", 1500.0));
-        cities.add(new Produit("Espagne","http://www.sejour-linguistique-lec.fr/wp-content/uploads/espagne-02.jpg", 1500.0));
-        cities.add(new Produit("Italie","http://retouralinnocence.com/wp-content/uploads/2013/05/Hotel-en-Italie-pour-les-Vacances2.jpg", 1500.0));
-        cities.add(new Produit("Russie","http://www.choisir-ma-destination.com/uploads/_large_russie-moscou2.jpg", 1500.0));
+        cities.add(new Produit("Crême Lavante", R.drawable.creme_lavante_hypoallergenique_pour_les_mains, 5500.0));
+        cities.add(new Produit("Léssive liquide", R.drawable.lessive_liquide_ecocert_5l, 6600.0));
+        cities.add(new Produit("Désinfectant", R.drawable.nettoyant_multi_surfaces_desinfectant, 7800.0));
+        cities.add(new Produit("Savon antiseptique", R.drawable.savon_antiseptique, 9000.0));
+        cities.add(new Produit("Savon doux", R.drawable.savon_doux_anios, 1500.0));
+        cities.add(new Produit("Savon main",R.drawable.savon_main_antiseptique, 3500.0));
     }
 
 }

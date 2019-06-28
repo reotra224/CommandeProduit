@@ -22,7 +22,7 @@
             android:layout_width="110dp"
             android:layout_height="140dp"
             android:contentDescription="Image du produit"
-            android:padding="2dp"
+            android:layout_margin="2dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background" />
 
@@ -30,11 +30,10 @@
             android:id="@+id/nom_produit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:layout_toRightOf="@+id/img_produit_panier"
             android:background="?android:selectableItemBackground"
             android:text="Nom Produit"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <TextView
@@ -47,7 +46,7 @@
             android:text="Prix: 150000 CFA"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/colorPrimary"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnSupProduitPanier"
@@ -67,7 +66,7 @@
             android:text="Quantité: 25"
             android:layout_marginBottom="5dp"
             android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:layout_toRightOf="@+id/img_produit_panier" />
     </RelativeLayout>

@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- Les CardView agissent comme des FrameLayout,
@@ -33,6 +33,17 @@
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/parisguidetower" />
+
+        <TextView
+            android:id="@+id/card_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:padding="20dp"
+            tools:text="Paris"
+            android:fontFamily="sans-serif"
+            android:textColor="#333"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

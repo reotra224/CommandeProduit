@@ -94,7 +94,7 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
         public void bind(ProduitPanier p) {
             nomProduitPanier.setText(p.getProduit_panier().getTitre());
             prixProduitPanier.setText("Prix: " + String.valueOf(p.getProduit_panier().getPrix()) + " CFA");
-            imgProduitPanier.setImageResource(R.drawable.parisguidetower);
+            imgProduitPanier.setImageResource(p.getProduit_panier().getImage());
             qteProduitPanier.setText("Quantité: " + String.valueOf(p.getQuantite_produit_panier()));
         }
     }

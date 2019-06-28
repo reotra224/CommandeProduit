@@ -70,6 +70,9 @@ public class Panier extends AppCompatActivity {
         txViewMntTotal.setText(String.valueOf(mntTotal) + " CFA");
     }
 
+    /**
+     * Permet de récupérer les produits du panier
+     */
     private void recupProduitPanier() {
         if (getIntent().hasExtra("LISTE_PRODUITS_PANIER")) {
             String json = getIntent().getStringExtra("LISTE_PRODUITS_PANIER");
@@ -83,6 +86,11 @@ public class Panier extends AppCompatActivity {
     }
 
     // Calcul du Montant total du panier
+
+    /**
+     * Permet de calculer le montant total du panier
+     * @param produitPaniers les produits du panier
+     */
     private void calculMontantTotal(@NonNull List<ProduitPanier> produitPaniers) {
         for (ProduitPanier prod : produitPaniers) {
             // On calcul le total de chaque produit et on l'ajoute au Montant

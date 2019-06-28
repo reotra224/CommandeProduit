@@ -4,31 +4,31 @@ import java.io.Serializable;
 
 public class Produit implements Serializable {
 
-    private String image;
+    private int image;
     private String titre;
     private Double prix;
     private String description;
 
     public Produit() { }
 
-    public Produit(String titre, String image, Double prix) {
+    public Produit(String titre, int image, Double prix) {
         this.image = image;
         this.titre = titre;
         this.prix = prix;
     }
 
-    public Produit(String titre, String image, Double prix, String description) {
+    public Produit(String titre, int image, Double prix, String description) {
         this.image = image;
         this.titre = titre;
         this.prix = prix;
         this.description = description;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
