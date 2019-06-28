@@ -28,12 +28,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<Produit> listProduits;
     public static List<ProduitPanier> paniers = new ArrayList<>();
     private Context context;
-    private int nbreProduit;
+    public static int nbreProduit;
 
     public MyAdapter(List<Produit> listProduits, Context context) {
         this.listProduits = listProduits;
         this.context = context;
-        this.nbreProduit = 0;
+        nbreProduit = 0;
     }
 
     @NonNull
@@ -106,10 +106,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public int getItemCount() {
         return listProduits.size();
-    }
-
-    public int getNbreProduit() {
-        return nbreProduit;
     }
 
     /**

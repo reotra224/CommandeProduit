@@ -1,9 +1,11 @@
 package gn.traore.commandeproduit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,13 +37,32 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderPanier holder, int position) {
-        if (listProduitsPanier.size() > 0) {
-            Toast.makeText(context, "Pas vide !", Toast.LENGTH_SHORT).show();
-        }
+    public void onBindViewHolder(@NonNull ViewHolderPanier holder, final int position) {
         final ProduitPanier produitPanier = listProduitsPanier.get(position);
         //On remplie le recyclerView
-        holder.bind(produitPanier.getProduit_panier());
+        holder.bind(produitPanier);
+        holder.btnSupprimerProduitPanier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Notifier le recyclerView pour qu'il actualise la liste
+                notifyItemRemoved(position);
+                notifyItemChanged(position, getItemCount());
+
+                Panier.finirSuppression(position);
+
+                /*Toast.makeText(context,produitPanier.getProduit_panier().getTitre() + ": Position = " + position + " Et Size = " + getItemCount(),
+                        Toast.LENGTH_SHORT).show();*/
+                //Si le panier est vide, on retourne dans la boutique
+                if (getItemCount() == 0) {
+                    // S'il n'y a plus de produit dans le panier
+                    // On retourne dans la boutique :)
+                    MyAdapter.nbreProduit = 0;
+                    Intent intent = new Intent(context, GestionProduit.class);
+                    context.startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
@@ -52,7 +73,8 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
     public class ViewHolderPanier extends RecyclerView.ViewHolder {
 
         private ImageView imgProduitPanier;
-        private TextView nomProduitPanier, prixProduitPanier, descProduitPanier;
+        private TextView nomProduitPanier, prixProduitPanier, qteProduitPanier;
+        private Button btnSupprimerProduitPanier;
 
         public ViewHolderPanier(@NonNull View itemView) {
             super(itemView);
@@ -61,17 +83,19 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
             imgProduitPanier = itemView.findViewById(R.id.img_produit_panier);
             nomProduitPanier = itemView.findViewById(R.id.nom_produit);
             prixProduitPanier = itemView.findViewById(R.id.prix_produit);
-            descProduitPanier = itemView.findViewById(R.id.description_produit);
+            qteProduitPanier = itemView.findViewById(R.id.qte_produit);
+            btnSupprimerProduitPanier = itemView.findViewById(R.id.btnSupProduitPanier);
         }
 
         /**
          * Fonction permettant de remplir la cardView du Panier
+         * @param p Le produit à afficher
          */
-        public void bind(Produit p) {
-            nomProduitPanier.setText(p.getTitre());
-            prixProduitPanier.setText(String.valueOf(p.getPrix()));
+        public void bind(ProduitPanier p) {
+            nomProduitPanier.setText(p.getProduit_panier().getTitre());
+            prixProduitPanier.setText("Prix: " + String.valueOf(p.getProduit_panier().getPrix()) + " CFA");
             imgProduitPanier.setImageResource(R.drawable.parisguidetower);
-            descProduitPanier.setText(p.getDescription());
+            qteProduitPanier.setText("Quantité: " + String.valueOf(p.getQuantite_produit_panier()));
         }
     }
 }

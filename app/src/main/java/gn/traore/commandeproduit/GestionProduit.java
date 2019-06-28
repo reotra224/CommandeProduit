@@ -40,7 +40,7 @@ public class GestionProduit extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         btnNbreProdSelect = findViewById(R.id.btnNbreProd);
-        btnNbreProdSelect.setText(String.valueOf(myAdapter.getNbreProduit()));
+        btnNbreProdSelect.setText(String.valueOf(MyAdapter.nbreProduit));
         btnCommande = findViewById(R.id.btnCommande);
 
         //On ajoute un OnClickListener sur les boutons
