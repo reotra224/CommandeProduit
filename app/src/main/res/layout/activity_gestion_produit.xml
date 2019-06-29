@@ -25,13 +25,14 @@
 
         <Button
             android:id="@+id/btnNbreProd"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="60dp"
             android:text="0"
             android:textColor="@color/colorAccent"
-            android:textSize="25sp"
+            android:textSize="50sp"
             android:textStyle="bold"
-            android:typeface="monospace" />
+            android:typeface="monospace"
+            android:background="@drawable/panier"/>
 
         <Button
             android:id="@+id/btnCommande"
