@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".LoginFragment">
+
+
+    <TextView
+        android:id="@+id/tvTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/strInscription"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="15dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <LinearLayout
+        android:id="@+id/layout_nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/tvTitre">
+
+        <TextView
+            android:id="@+id/tvNom"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strNom"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/editNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_prenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/layout_nom">
+
+        <TextView
+            android:id="@+id/tvPrenom"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strPrenom"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/editPrenom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/layout_prenom">
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strEmail"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textEmailAddress"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_Phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/layout_email">
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strPhone"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="phone" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_Adresse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/layout_Phone">
+
+        <TextView
+            android:id="@+id/tvAdresse"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strAdresse"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/editAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/layout_Adresse">
+
+        <TextView
+            android:id="@+id/tvAgent"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strAgent"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/editAgent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_bouton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_below="@id/layout_Agent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_inscrire"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"/>
+    </LinearLayout>
+</RelativeLayout>

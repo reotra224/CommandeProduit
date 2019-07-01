@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Commande Produit</string>
     <string name="btn_commander">COMMANDER</string>
+    <string name="btn_inscrire">S\'inscrire</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="strInscription">INSCRIPTION</string>
+    <string name="strNom">Nom</string>
+    <string name="strPrenom">Prénom</string>
+    <string name="strEmail">E-mail</string>
+    <string name="strPhone">Téléphone</string>
+    <string name="strAdresse">Adresse</string>
+    <string name="strAgent">Agent</string>
 </resources>
