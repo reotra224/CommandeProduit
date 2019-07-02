@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private boolean inscriptionOK;
-    private ArrayList<String> identifiants = new ArrayList<>();
+    private ArrayList<String> data = new ArrayList<>();
     public static FragmentManager fragmentManager;
 
     @Override
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         inscriptionOK = verifInscription();
 
-        configureEtAfficherLesFragments(inscriptionOK, identifiants);
+        configureEtAfficherLesFragments(inscriptionOK, data);
 
     }
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 result = buf.toString();
                 if (!result.isEmpty()) {
                     for (String str : result.split(";")) {
-                        identifiants.add(str);
+                        data.add(str);
                     }
                 }
             }
@@ -79,10 +79,16 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Permet de gérer les fragments à afficher en fonction d'un boolean.
      * @param inscriptionOK
-     * @param identifiants
+     * @param data
      */
-    private void configureEtAfficherLesFragments(boolean inscriptionOK, ArrayList<String> identifiants) {
+    private void configureEtAfficherLesFragments(boolean inscriptionOK, ArrayList<String> data) {
         if (!inscriptionOK) {
+            //On forme les identifiants à envoyer au fragement Accueil
+            ArrayList<String> identifiants = new ArrayList<>();
+            identifiants.add(data.get(3));
+            identifiants.add(data.get(6));
+
+            //Ensuite on lance le fragment Accueil
             AccueilFragment accueilFragment = AccueilFragment.getInstance(identifiants);
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, accueilFragment)
@@ -94,6 +100,4 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
     }
-
-
 }

@@ -66,40 +66,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         //TODO Vérifier que le phone/certains champs ne sont pas vide
-        String token = "token_id1";
         //On envoie les données à l'API d'inscription
-
-        //Si on reçoit le token
-        if (!token.isEmpty()) {
-            //On le concatène avec le phone
-            String identifiants = phone.getText() + ";" + token;
-
-            //Et on le stocke dans le fichier "identifiants"
-            try {
-                OutputStreamWriter writer = new OutputStreamWriter(view.getContext().openFileOutput("identifiants", Context.MODE_PRIVATE));
-                writer.write(identifiants);
-                writer.close();
-
-                //On crée le tableau des identifiants à passer au fragment Accueil.
-                ArrayList<String> phoneToken = new ArrayList<>();
-                phoneToken.add(phone.getText().toString());
-                phoneToken.add(token);
-
-                //On lance le fragment Accueil
-                AccueilFragment accueilFragment = AccueilFragment.getInstance(phoneToken);
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, accueilFragment)
-                        .commit();
-
-            } catch (FileNotFoundException e) {
-                Toast.makeText(view.getContext(), "FileNotFoundException", Toast.LENGTH_LONG);
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            //Sinon on affiche un message d'erreur
-            Toast.makeText(view.getContext(), "Token vide !", Toast.LENGTH_LONG).show();
-        }
+        new ApiInscription(view.getContext()).execute(
+                nom.getText(),
+                prenom.getText(),
+                email.getText(),
+                phone.getText(),
+                address.getText(),
+                agent.getText());
     }
 }
