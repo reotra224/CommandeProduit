@@ -1,38 +1,42 @@
 package gn.traore.commandeproduit;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import static gn.traore.commandeproduit.MainActivity.fragmentManager;
+import java.lang.reflect.Type;
+
+import gn.traore.commandeproduit.apis.ApiInscription;
+import gn.traore.commandeproduit.model.Client;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private EditText nom, prenom, email, phone, address, agent;
     private Button btnInscrire;
+    private Client client = null;
+    private int typeOperation = 0;
 
     public LoginFragment() {
         // Required empty public constructor
+    }
+
+    public static LoginFragment getInstance(String client) {
+        LoginFragment loginFragment = new LoginFragment();
+        Bundle args = new Bundle();
+        args.putString("CLIENT", client);
+        loginFragment.setArguments(args);
+        return loginFragment;
     }
 
     @Nullable
@@ -51,6 +55,31 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         //On écoute le bouton
         btnInscrire.setOnClickListener(this);
+
+        //On récupère le client reçu en paramètre
+        Bundle args = getArguments();
+        if (args != null && args.containsKey("CLIENT")) {
+            String clientJson = args.getString("CLIENT");
+            // On le désérialize en Client
+            Gson gson = new Gson();
+            Type type = new TypeToken<Client>() {}.getType();
+            client = gson.fromJson(clientJson, type);
+            //Toast.makeText(view.getContext(), client.getNom(), Toast.LENGTH_LONG).show();
+            //On rempli le formulaire avec les infos du client
+            nom.setText(client.getNom());
+            prenom.setText(client.getPrenom());
+            email.setText(client.getEmail());
+            phone.setText(client.getPhone());
+            address.setText(client.getAdresse());
+            agent.setText(client.getAgent());
+            //On change le label du bouton
+            btnInscrire.setText("MODIFIER");
+            //On met le type d'opération à EDITION=1
+            typeOperation = 1;
+        } else {
+            //On met le type d'opération à ADD=1
+            typeOperation = 0;
+        }
     }
 
     private void recupItemsFragment(View view) {
@@ -67,7 +96,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         //TODO Vérifier que le phone/certains champs ne sont pas vide
         //On envoie les données à l'API d'inscription
-        new ApiInscription(view.getContext()).execute(
+        new ApiInscription(view.getContext(), typeOperation).execute(
                 nom.getText(),
                 prenom.getText(),
                 email.getText(),

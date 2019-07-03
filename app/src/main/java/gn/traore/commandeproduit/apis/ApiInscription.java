@@ -1,4 +1,4 @@
-package gn.traore.commandeproduit;
+package gn.traore.commandeproduit.apis;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -14,16 +14,20 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import gn.traore.commandeproduit.AccueilFragment;
+import gn.traore.commandeproduit.R;
 import gn.traore.commandeproduit.model.Client;
 
 import static gn.traore.commandeproduit.MainActivity.fragmentManager;
 
 public class ApiInscription extends AsyncTask {
     private Context context;
+    private int typeOperation;
     private Client client;
 
-    public ApiInscription(Context context) {
+    public ApiInscription(Context context, int typeOperation) {
         this.context = context;
+        this.typeOperation = typeOperation;
     }
 
     @Override
@@ -51,8 +55,14 @@ public class ApiInscription extends AsyncTask {
                     URLEncoder.encode(client.getAdresse(), "UTF-8");
             data += "&" + URLEncoder.encode("agent", "UTF-8") + "=" +
                     URLEncoder.encode(client.getAgent(), "UTF-8");
-            data += "&" + URLEncoder.encode("param", "UTF-8") + "=" +
-                    URLEncoder.encode("add", "UTF-8");
+            //On choisit le type d'opération à éffectuer
+            if (typeOperation == 0) { // 0 = ADD
+                data += "&" + URLEncoder.encode("param", "UTF-8") + "=" +
+                        URLEncoder.encode("add", "UTF-8");
+            } else { // 1 = EDITION
+                data += "&" + URLEncoder.encode("param", "UTF-8") + "=" +
+                        URLEncoder.encode("edition", "UTF-8");
+            }
 
             URL url = new URL(link);
             URLConnection conn = url.openConnection();
@@ -104,6 +114,11 @@ public class ApiInscription extends AsyncTask {
                 ArrayList<String> phoneToken = new ArrayList<>();
                 phoneToken.add(client.getPhone());
                 phoneToken.add(result);
+
+                if (typeOperation == 0)
+                    Toast.makeText(context, "Client inscrit avec succèss !", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(context, "Informations modifiées avec succèss !", Toast.LENGTH_LONG).show();
 
                 //On lance le fragment Accueil
                 AccueilFragment accueilFragment = AccueilFragment.getInstance(phoneToken);

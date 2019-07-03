@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="50dp">
 
         <Button
             android:id="@+id/btnListeProduits"
@@ -49,7 +49,7 @@
         android:layout_marginTop="15dp">
 
         <Button
-            android:id="@+id/btnSupport"
+            android:id="@+id/btnReglages"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -57,11 +57,35 @@
             android:layout_margin="5dp"/>
 
         <Button
-            android:id="@+id/btnCommercial"
+            android:id="@+id/btnSupport"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@drawable/support_commercial_png"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+
+        <Button
+            android:id="@+id/btnYoutube"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/youtube"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/btnSante"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/sante"
             android:layout_margin="5dp" />
 
     </LinearLayout>
