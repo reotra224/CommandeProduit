@@ -102,24 +102,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
      */
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView;
+        private TextView nomView;
         private ImageView imageView;
         private CardView cardView;
+        private TextView cardPrix;
 
         public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             //On reccupère les élements de la cardView
-            textView = itemView.findViewById(R.id.card_text);
+            nomView = itemView.findViewById(R.id.card_text);
             imageView = itemView.findViewById(R.id.card_image);
             cardView = itemView.findViewById(R.id.card_layout);
+            cardPrix = itemView.findViewById(R.id.card_prix);
         }
 
         /**
          * Fonction permettant de remplir la cardView
          */
         public void bind(Produit produit) {
-            textView.setText(produit.getNom());
+            nomView.setText(produit.getNom());
+            cardPrix.setText(String.valueOf(produit.getPrix()) + " FCFA");
             //On réccupère l'image du produit
             new ApiGetImage(context, imageView).execute(produit.getImage());
             //imageView.setImageResource(produit.getImage());

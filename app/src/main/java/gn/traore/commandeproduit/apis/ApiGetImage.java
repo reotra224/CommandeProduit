@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +14,7 @@ public class ApiGetImage extends AsyncTask {
 
     private Context context;
     private ImageView imageView;
+    private Bitmap bitmap = null;
 
     public ApiGetImage(Context context, ImageView imageView) {
         this.context = context;
@@ -23,9 +25,7 @@ public class ApiGetImage extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
 
         //On forme l'url de l'image
-        String linkImage = "http://www.3s7.org/tech/images/produits/" + String.valueOf(objects[0]);
-
-        Bitmap bitmap = null;
+        String linkImage = "http://www.tech.3s7.org/images/produits/" + String.valueOf(objects[0]);
 
         //On recupère l'image
         try {
@@ -40,7 +40,7 @@ public class ApiGetImage extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         Bitmap bitmap = (Bitmap) o;
-        super.onPostExecute(o);
+        Toast.makeText(context, String.valueOf(bitmap), Toast.LENGTH_LONG).show();
         imageView.setImageBitmap(bitmap);
     }
 }
