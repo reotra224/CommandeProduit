@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/background"
-    tools:context=".AccueilFragment">
+    tools:context=".SupportActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Accueil"
+        android:text="Support"
         android:textSize="50sp"
         android:textStyle="bold"
         android:typeface="monospace"
         app:fontFamily="monospace"
-        android:textColor="#000"
+        android:textColor="#FFF"
         android:gravity="center"/>
 
     <LinearLayout
@@ -27,11 +27,11 @@
         android:layout_marginTop="50dp">
 
         <Button
-            android:id="@+id/btnListeProduits"
+            android:id="@+id/btnSupportLigne"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/lis_product"
+            android:background="@drawable/support_ligne"
             android:layout_margin="5dp"/>
 
         <Button
@@ -39,7 +39,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/panier"
+            android:background="@drawable/support_technique"
             android:layout_margin="5dp"/>
 
     </LinearLayout>
@@ -55,7 +55,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/support_technique_png"
+            android:background="@drawable/assistant"
             android:layout_margin="5dp"/>
 
         <Button
@@ -64,30 +64,6 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@drawable/support_commercial_png"
-            android:layout_margin="5dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp">
-
-        <Button
-            android:id="@+id/btnYoutube"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@drawable/youtube"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/btnSante"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@drawable/sante"
             android:layout_margin="5dp" />
 
     </LinearLayout>

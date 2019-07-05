@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import gn.traore.commandeproduit.apis.ApiCommande;
 import gn.traore.commandeproduit.model.Client;
 
 import static gn.traore.commandeproduit.MainActivity.fragmentManager;
@@ -66,7 +67,7 @@ public class AccueilFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null && args.containsKey("IDENTIFIANTS")) {
             identifiants = args.getStringArrayList("IDENTIFIANTS");
-            Toast.makeText(view.getContext(), "Phone= " + identifiants.get(0) + " Token= " + identifiants.get(1), Toast.LENGTH_LONG).show();
+            //Toast.makeText(view.getContext(), "Phone= " + identifiants.get(0) + " Token= " + identifiants.get(1), Toast.LENGTH_LONG).show();
         }
 
         //On ajoute les évenements sur les boutons
@@ -82,10 +83,9 @@ public class AccueilFragment extends Fragment {
         btnListProduits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Ensuite on lance le fragment Accueil
-                Intent intent = new Intent(view.getContext(), GestionProduit.class);
-                intent.putExtra("IDENTIFIANTS", identifiants);
-                view.getContext().startActivity(intent);
+                //On récupère les produits dépuis le BACK et on lance
+                // l'activité GestionProduit.
+                new ApiCommande(view.getContext()).execute(identifiants.get(1));
             }
         });
 
@@ -124,6 +124,15 @@ public class AccueilFragment extends Fragment {
                             .replace(R.id.fragmentContainer, loginFragment)
                             .commit();
                 }
+            }
+        });
+
+        //Le support
+        btnSupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SupportActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 

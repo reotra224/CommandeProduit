@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import gn.traore.commandeproduit.apis.ApiGetImage;
 import gn.traore.commandeproduit.model.Produit;
 import gn.traore.commandeproduit.model.ProduitPanier;
 
@@ -71,7 +72,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             //On recherche une occurence du produit sélectionné dans le panier
             for (ProduitPanier pp: paniers) {
                 //Si on n'en trouve
-                if (pp.getProduit_panier().getTitre().equals(produit.getTitre())) {
+                if (pp.getProduit_panier().getNom().equals(produit.getNom())) {
                     //On augmente la quantité
                     pp.setQuantite_produit_panier(pp.getQuantite_produit_panier() + 1);
                     verif = true;
@@ -118,8 +119,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
          * Fonction permettant de remplir la cardView
          */
         public void bind(Produit produit) {
-            textView.setText(produit.getTitre());
-            imageView.setImageResource(produit.getImage());
+            textView.setText(produit.getNom());
+            //On réccupère l'image du produit
+            new ApiGetImage(context, imageView).execute(produit.getImage());
+            //imageView.setImageResource(produit.getImage());
         }
 
     }

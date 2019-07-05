@@ -92,9 +92,9 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
          * @param p Le produit à afficher
          */
         public void bind(ProduitPanier p) {
-            nomProduitPanier.setText(p.getProduit_panier().getTitre());
+            nomProduitPanier.setText(p.getProduit_panier().getNom());
             prixProduitPanier.setText("Prix: " + String.valueOf(p.getProduit_panier().getPrix()) + " CFA");
-            imgProduitPanier.setImageResource(p.getProduit_panier().getImage());
+            //imgProduitPanier.setImageResource(p.getProduit_panier().getImage());
             qteProduitPanier.setText("Quantité: " + String.valueOf(p.getQuantite_produit_panier()));
         }
     }

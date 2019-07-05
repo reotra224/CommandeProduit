@@ -7,6 +7,7 @@ public class ProduitPanier implements Serializable {
     private Produit produit_panier;
     private int quantite_produit_panier;
 
+
     public ProduitPanier() {}
 
     public ProduitPanier(Produit produit_panier, int quantite_produit_panier) {
