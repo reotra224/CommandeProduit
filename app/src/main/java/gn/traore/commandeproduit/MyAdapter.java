@@ -1,7 +1,6 @@
 package gn.traore.commandeproduit;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,6 @@ import gn.traore.commandeproduit.apis.ApiGetImage;
 import gn.traore.commandeproduit.model.Produit;
 import gn.traore.commandeproduit.model.ProduitPanier;
 
-import static android.content.Context.MODE_PRIVATE;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -124,8 +120,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             nomView.setText(produit.getNom());
             cardPrix.setText(String.valueOf(produit.getPrix()) + " FCFA");
             //On réccupère l'image du produit
-            new ApiGetImage(context, imageView).execute(produit.getImage());
-            //imageView.setImageResource(produit.getImage());
+            //new ApiGetImage(context, imageView).execute(produit.getImage());
+            imageView.setImageResource(R.drawable.creme_lavante_hypoallergenique_pour_les_mains);
         }
 
     }

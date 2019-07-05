@@ -85,7 +85,8 @@ public class AccueilFragment extends Fragment {
             public void onClick(View view) {
                 //On récupère les produits dépuis le BACK et on lance
                 // l'activité GestionProduit.
-                new ApiCommande(view.getContext()).execute(identifiants.get(1));
+                new ApiCommande(view.getContext(), identifiants.get(0), 0)
+                        .execute(identifiants.get(1));
             }
         });
 

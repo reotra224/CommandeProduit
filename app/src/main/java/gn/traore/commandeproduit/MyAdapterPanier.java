@@ -95,6 +95,7 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
             nomProduitPanier.setText(p.getProduit_panier().getNom());
             prixProduitPanier.setText("Prix: " + String.valueOf(p.getProduit_panier().getPrix()) + " CFA");
             //imgProduitPanier.setImageResource(p.getProduit_panier().getImage());
+            imgProduitPanier.setImageResource(R.drawable.creme_lavante_hypoallergenique_pour_les_mains);
             qteProduitPanier.setText("Quantité: " + String.valueOf(p.getQuantite_produit_panier()));
         }
     }

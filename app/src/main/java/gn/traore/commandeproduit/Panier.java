@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import gn.traore.commandeproduit.apis.ApiCommande;
+import gn.traore.commandeproduit.model.ProduitDTO;
 import gn.traore.commandeproduit.model.ProduitPanier;
 
 public class Panier extends AppCompatActivity {
@@ -25,6 +29,8 @@ public class Panier extends AppCompatActivity {
     private MyAdapterPanier myAdapterPanier;
     private static List<ProduitPanier> produitPaniers = new ArrayList<>();
     private static Double mntTotalPanier = 0.0;
+    private Button btnCommande;
+    private String phone, token;
 
     private RecyclerView recyclerViewPanier;
 
@@ -35,6 +41,7 @@ public class Panier extends AppCompatActivity {
 
         recyclerViewPanier = findViewById(R.id.recyclerViewPanier);
         txViewMntTotal = findViewById(R.id.mntTotalPanier);
+        btnCommande = findViewById(R.id.btnCommandePanier);
 
         //On récupère les produits du panier
         recupProduitPanier();
@@ -50,6 +57,33 @@ public class Panier extends AppCompatActivity {
 
         //Puis on spécifit l'adapter du recyclerView
         recyclerViewPanier.setAdapter(myAdapterPanier);
+
+        btnCommande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //On vérifie qu'il a des produits dans le panier
+                if (produitPaniers.size() > 0) {
+                    //On récupère
+                    //Ensuite on forme les données à envoyer à l'API
+                    ArrayList<ProduitDTO> produitDtos = new ArrayList<>();
+                    for (ProduitPanier p : produitPaniers) {
+                        //On crée une instance du DTO et on l'ajoute à la liste
+                        produitDtos.add(new ProduitDTO(
+                                p.getProduit_panier().getId(),
+                                p.getProduit_panier().getPrix(),
+                                p.getQuantite_produit_panier(),
+                                phone, mntTotalPanier
+                        ));
+                    }
+                    //On converti les données en JSON
+                    Gson gson = new Gson();
+                    String produitDtoJson = gson.toJson(produitDtos);
+                    //On envoie les commandes à l'API
+                    new ApiCommande(Panier.this, phone, 1)
+                            .execute(produitDtoJson, token);
+                }
+            }
+        });
     }
 
     @Override
@@ -83,10 +117,12 @@ public class Panier extends AppCompatActivity {
             //On calcul le montant total du panier
             calculMontantTotal(produitPaniers);
         }
+        //On récupère les identifiants du client
+        if (getIntent().hasExtra("TOKEN") && getIntent().hasExtra("PHONE")) {
+            token = getIntent().getStringExtra("TOKEN");
+            phone = getIntent().getStringExtra("PHONE");
+        }
     }
-
-    // Calcul du Montant total du panier
-
     /**
      * Permet de calculer le montant total du panier
      * @param produitPaniers les produits du panier

@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/img_produit_panier"
             android:layout_width="110dp"
-            android:layout_height="140dp"
+            android:layout_height="120dp"
             android:contentDescription="Image du produit"
             android:layout_margin="2dp"
             android:scaleType="centerCrop"
