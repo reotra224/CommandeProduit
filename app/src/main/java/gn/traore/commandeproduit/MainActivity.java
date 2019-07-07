@@ -93,22 +93,12 @@ public class MainActivity extends AppCompatActivity {
             AccueilFragment accueilFragment = AccueilFragment.getInstance(identifiants);
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, accueilFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
                     .commit();
         }
         else {
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, new LoginFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
                     .commit();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        fragmentManager.popBackStack();
-        super.onBackPressed();
     }
 }
