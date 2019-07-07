@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,7 @@ public class Panier extends AppCompatActivity {
     private static List<ProduitPanier> produitPaniers = new ArrayList<>();
     private static Double mntTotalPanier = 0.0;
     private Button btnCommande;
-    private String phone, token;
+    private static String phone, token;
 
     private RecyclerView recyclerViewPanier;
 
@@ -163,5 +164,25 @@ public class Panier extends AppCompatActivity {
             MyAdapter.paniers.remove(position);
         }
 
+    }
+
+    /**
+     * Methode permettant de nettoyer le panier.
+     * @param context le context à partir duquel elle sera appellée.
+     */
+    public static void nettoyerPanier(Context context) {
+        //On vide la liste des produits du panier et de l'adapter
+        produitPaniers.clear();
+        MyAdapter.paniers.clear();
+        //On initialise le montant total du panier
+        mntTotalPanier = 0.0;
+        afficheMontantTotalDuPanier(mntTotalPanier);
+        //On initialise le nombre de produit sélectionné
+        MyAdapter.nbreProduit = 0;
+        GestionProduit.btnNbreProdSelect.setText(String.valueOf(MyAdapter.nbreProduit));
+        //On récupère les produits dépuis le BACK et on lance
+        // l'activité GestionProduit.
+        new ApiCommande(context, phone, 0)
+                .execute(token);
     }
 }

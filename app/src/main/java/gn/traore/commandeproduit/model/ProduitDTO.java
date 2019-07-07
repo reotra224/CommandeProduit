@@ -7,24 +7,24 @@ public class ProduitDTO implements Serializable {
     private Double prix;
     private int quantite;
     private String phone;
-    private Double montantTotal;
+    private Double montant;
 
     public ProduitDTO() {
     }
 
-    public ProduitDTO(int id_produit, Double prix, int quantite, String phone, Double montantTotal) {
+    public ProduitDTO(int id_produit, Double prix, int quantite, String phone, Double montant) {
         this.id_produit = id_produit;
         this.prix = prix;
         this.quantite = quantite;
         this.phone = phone;
-        this.montantTotal = montantTotal;
+        this.montant = montant;
     }
 
-    public ProduitDTO(Double prix, int quantite, String phone, Double montantTotal) {
+    public ProduitDTO(Double prix, int quantite, String phone, Double montant) {
         this.prix = prix;
         this.quantite = quantite;
         this.phone = phone;
-        this.montantTotal = montantTotal;
+        this.montant = montant;
     }
 
     public int getId_produit() {
@@ -59,11 +59,11 @@ public class ProduitDTO implements Serializable {
         this.phone = phone;
     }
 
-    public Double getMontantTotal() {
-        return montantTotal;
+    public Double getMontant() {
+        return montant;
     }
 
-    public void setMontantTotal(Double montantTotal) {
-        this.montantTotal = montantTotal;
+    public void setMontant(Double montant) {
+        this.montant = montant;
     }
 }

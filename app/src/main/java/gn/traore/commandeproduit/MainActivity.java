@@ -2,6 +2,7 @@ package gn.traore.commandeproduit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -92,12 +93,22 @@ public class MainActivity extends AppCompatActivity {
             AccueilFragment accueilFragment = AccueilFragment.getInstance(identifiants);
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, accueilFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
                     .commit();
         }
         else {
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, new LoginFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
                     .commit();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragmentManager.popBackStack();
+        super.onBackPressed();
     }
 }

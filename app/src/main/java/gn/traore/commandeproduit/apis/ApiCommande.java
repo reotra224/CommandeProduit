@@ -23,6 +23,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import gn.traore.commandeproduit.GestionProduit;
+import gn.traore.commandeproduit.Panier;
 import gn.traore.commandeproduit.model.ProduitDTO;
 
 public class ApiCommande extends AsyncTask {
@@ -145,7 +146,9 @@ public class ApiCommande extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         String result = String.valueOf(o);
-        if (!result.equalsIgnoreCase("ERROR")) {
+        if (result.equalsIgnoreCase("ERROR")) {
+            Toast.makeText(context, "Erreur dans l'identification du client !", Toast.LENGTH_SHORT).show();
+        } else {
             if (typeOperation == 0) {
                 //On crée un Intent
                 Intent intent = new Intent(context, GestionProduit.class);
@@ -154,10 +157,12 @@ public class ApiCommande extends AsyncTask {
                 intent.putExtra("TOKEN", token);
                 context.startActivity(intent);
             } else {
-                Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Commande enregistrée avec succès !",
+                        Toast.LENGTH_SHORT).show();
+
+                // On vide le panier
+                Panier.nettoyerPanier(context);
             }
-        } else {
-            Toast.makeText(context, "Erreur dans l'identification du client !", Toast.LENGTH_SHORT).show();
         }
     }
 }

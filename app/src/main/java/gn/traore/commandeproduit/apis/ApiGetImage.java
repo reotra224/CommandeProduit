@@ -25,7 +25,7 @@ public class ApiGetImage extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
 
         //On forme l'url de l'image
-        String linkImage = "http://www.tech.3s7.org/images/produits/" + String.valueOf(objects[0]);
+        String linkImage = "http://www.tech.3s7.org/images/produits/" + objects[0];
 
         //On recupère l'image
         try {
