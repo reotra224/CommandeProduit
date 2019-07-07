@@ -137,6 +137,15 @@ public class AccueilFragment extends Fragment {
             }
         });
 
+        //La chaine Youtube
+        btnYoutube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), YoutubeActivity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
     }
 
     /**
