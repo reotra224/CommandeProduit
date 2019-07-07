@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TECH 3S7</string>
     <string name="btn_commander">COMMANDER</string>
+    <string name="btn_annuler">ANNULER</string>
     <string name="btn_inscrire">S\'inscrire</string>
 
     <!-- TODO: Remove or change this placeholder text -->

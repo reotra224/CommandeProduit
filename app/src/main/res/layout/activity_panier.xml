@@ -14,13 +14,12 @@
         android:layout_height="0dp"
         android:layout_weight="70"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="30"
         android:gravity="center"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="vertical">
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:id="@+id/mntTotalPanier"
@@ -35,12 +34,24 @@
             android:layout_marginBottom="15dp"/>
 
         <Button
+            android:id="@+id/btnAnnulerPanier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_annuler"
+            android:textSize="20sp"
+            android:layout_below="@id/mntTotalPanier"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="15dp"/>
+
+        <Button
             android:id="@+id/btnCommandePanier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_commander"
-            android:textSize="25sp" />
+            android:textSize="20sp"
+            android:layout_below="@id/mntTotalPanier"
+            android:layout_toRightOf="@id/btnAnnulerPanier"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

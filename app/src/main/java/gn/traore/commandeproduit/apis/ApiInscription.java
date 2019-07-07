@@ -94,7 +94,7 @@ public class ApiInscription extends AsyncTask {
     protected void onPostExecute(Object o) {
         String result = String.valueOf(o);
         //Si on reçoit le token
-        if (!result.isEmpty()) {
+        if (!result.equalsIgnoreCase("ERROR")) {
             //On le concatène avec le phone
             String identifiants = client.getNom() + ";" +
                     client.getPrenom() + ";" +
@@ -134,8 +134,7 @@ public class ApiInscription extends AsyncTask {
             }
         } else {
             //Sinon on affiche un message d'erreur
-            Toast.makeText(context, "Token vide !", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Problème de connexion au serveur !", Toast.LENGTH_LONG).show();
         }
-        //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
 }

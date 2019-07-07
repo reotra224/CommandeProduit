@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SupportActivity"></activity>
+        <activity android:name=".YoutubeActivity"></activity>
+        <activity android:name=".SupportActivity" />
         <activity android:name=".GestionProduit" />
         <activity android:name=".Panier" />
         <activity android:name=".MainActivity">

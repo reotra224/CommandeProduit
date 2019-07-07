@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +32,7 @@ public class Panier extends AppCompatActivity {
     private MyAdapterPanier myAdapterPanier;
     private static List<ProduitPanier> produitPaniers = new ArrayList<>();
     private static Double mntTotalPanier = 0.0;
-    private Button btnCommande;
+    private Button btnCommande, btnAnnuler;
     private static String phone, token;
 
     private RecyclerView recyclerViewPanier;
@@ -43,6 +45,7 @@ public class Panier extends AppCompatActivity {
         recyclerViewPanier = findViewById(R.id.recyclerViewPanier);
         txViewMntTotal = findViewById(R.id.mntTotalPanier);
         btnCommande = findViewById(R.id.btnCommandePanier);
+        btnAnnuler = findViewById(R.id.btnAnnulerPanier);
 
         //On récupère les produits du panier
         recupProduitPanier();
@@ -59,6 +62,40 @@ public class Panier extends AppCompatActivity {
         //Puis on spécifit l'adapter du recyclerView
         recyclerViewPanier.setAdapter(myAdapterPanier);
 
+        //Ajout des évènements sur les boutons
+        ajouterEvenementSurBouton();
+
+    }
+
+    private void ajouterEvenementSurBouton() {
+
+        //Annulation de la commande
+        btnAnnuler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // On crée la fenetre de confirmation avant de vider le panier
+                AlertDialog.Builder builder = new AlertDialog.Builder(Panier.this);
+                builder.setTitle("Confirmation d'annulation de commande")
+                        .setMessage("Êtes vous sûre de vouloir annnuler votre commande ?")
+                        .setPositiveButton("OUI", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(Panier.this, "Commande annulée avec succèss ",
+                                        Toast.LENGTH_SHORT).show();
+                                //On néttoie le panier
+                                Panier.nettoyerPanier(Panier.this);
+                            }
+                        })
+                        .setNegativeButton("NON", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .create().show();
+            }
+        });
+
+        //Validation de la commande
         btnCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
