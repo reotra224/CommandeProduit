@@ -1,94 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/background"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".AccueilFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Accueil"
+        android:textColor="#000"
         android:textSize="50sp"
         android:textStyle="bold"
         android:typeface="monospace"
-        app:fontFamily="monospace"
-        android:textColor="#000"
-        android:gravity="center"/>
+        app:fontFamily="monospace" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnListeProduits"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/lis_product"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:background="@drawable/lis_product" />
 
         <Button
             android:id="@+id/btnPanier"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/panier"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:background="@drawable/panier" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnReglages"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/support_technique_png"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:background="@drawable/support_technique_png" />
 
         <Button
-            android:id="@+id/btnSupport"
+            android:id="@+id/btnSupports"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/support_commercial_png"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:background="@drawable/support_commercial_png" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnYoutube"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/youtube"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:background="@drawable/youtube" />
 
         <Button
             android:id="@+id/btnSante"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/sante"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:background="@drawable/sante" />
 
     </LinearLayout>
 
