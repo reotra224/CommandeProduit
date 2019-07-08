@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import gn.traore.commandeproduit.apis.ApiCommande;
 import gn.traore.commandeproduit.apis.ApiGetImage;
 import gn.traore.commandeproduit.model.Produit;
 import gn.traore.commandeproduit.model.ProduitPanier;
@@ -24,10 +25,13 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
 
     private List<ProduitPanier> listProduitsPanier = new ArrayList<>();
     private Context context;
+    private String phone, token;
 
-    public MyAdapterPanier(List<ProduitPanier> list, Context context) {
+    public MyAdapterPanier(List<ProduitPanier> list, Context context, String phone, String token) {
         this.listProduitsPanier = list;
         this.context = context;
+        this.phone = phone;
+        this.token = token;
     }
 
     @NonNull
@@ -59,8 +63,10 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
                     // S'il n'y a plus de produit dans le panier
                     // On retourne dans la boutique :)
                     MyAdapter.nbreProduit = 0;
-                    Intent intent = new Intent(context, GestionProduit.class);
-                    context.startActivity(intent);
+                    //On récupère les produits dépuis le BACK et on lance
+                    // l'activité GestionProduit.
+                    new ApiCommande(context, phone, 0)
+                            .execute(token);
                 }
             }
         });

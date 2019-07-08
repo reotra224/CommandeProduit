@@ -56,7 +56,7 @@ public class Panier extends AppCompatActivity {
         afficheMontantTotalDuPanier(mntTotalPanier);
 
         //On créer une instance de l'adapter
-        myAdapterPanier = new MyAdapterPanier(produitPaniers, this);
+        myAdapterPanier = new MyAdapterPanier(produitPaniers, this, phone, token);
 
         //définit l'agencement des cellules, ici de façon verticale, comme une ListView
         recyclerViewPanier.setLayoutManager(new LinearLayoutManager(this));
