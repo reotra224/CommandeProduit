@@ -13,4 +13,7 @@
     <string name="strPhone">Téléphone</string>
     <string name="strAdresse">Adresse</string>
     <string name="strAgent">Agent</string>
+    <string name="tvCommercial">COMMERCIAL</string>
+    <string name="tvSupport">SUPPORT</string>
+    <string name="tvSav">SAV</string>
 </resources>
