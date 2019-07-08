@@ -93,12 +93,25 @@ public class MainActivity extends AppCompatActivity {
             AccueilFragment accueilFragment = AccueilFragment.getInstance(identifiants);
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, accueilFragment)
+                    .addToBackStack(null)
                     .commit();
         }
         else {
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, new LoginFragment())
+                    .addToBackStack(null)
                     .commit();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int count = fragmentManager.getBackStackEntryCount();
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            fragmentManager.popBackStack();
         }
     }
 }

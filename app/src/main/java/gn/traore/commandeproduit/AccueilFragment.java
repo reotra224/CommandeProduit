@@ -30,7 +30,7 @@ import static gn.traore.commandeproduit.MainActivity.fragmentManager;
 public class AccueilFragment extends Fragment {
 
     private ArrayList<String> identifiants;
-    private Button btnListProduits, btnReglages, btnPanier, btnYoutube, btnSupport, btnSante;
+    private Button btnListProduits, btnReglages, btnPanier, btnYoutube, btnSupports, btnSante;
 
     public AccueilFragment() {
         // Required empty public constructor
@@ -60,7 +60,7 @@ public class AccueilFragment extends Fragment {
         btnPanier = view.findViewById(R.id.btnPanier);
         btnReglages = view.findViewById(R.id.btnReglages);
         btnSante = view.findViewById(R.id.btnSante);
-        btnSupport = view.findViewById(R.id.btnSupport);
+        btnSupports = view.findViewById(R.id.btnSupports);
         btnYoutube = view.findViewById(R.id.btnYoutube);
 
         //On récupère les identifiants
@@ -123,13 +123,14 @@ public class AccueilFragment extends Fragment {
                     //Ensuite on lance le fragment Login
                     fragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainer, loginFragment)
+                            .addToBackStack(null)
                             .commit();
                 }
             }
         });
 
         //Le support
-        btnSupport.setOnClickListener(new View.OnClickListener() {
+        btnSupports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), SupportActivity.class);
@@ -145,7 +146,6 @@ public class AccueilFragment extends Fragment {
                 view.getContext().startActivity(intent);
             }
         });
-
     }
 
     /**

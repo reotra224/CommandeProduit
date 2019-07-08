@@ -26,6 +26,8 @@ import gn.traore.commandeproduit.apis.ApiCommande;
 import gn.traore.commandeproduit.model.ProduitDTO;
 import gn.traore.commandeproduit.model.ProduitPanier;
 
+import static gn.traore.commandeproduit.MainActivity.fragmentManager;
+
 public class Panier extends AppCompatActivity {
 
     private static TextView txViewMntTotal;
@@ -132,7 +134,9 @@ public class Panier extends AppCompatActivity {
             // S'il n'y a plus de produit dans le panier
             // On retourne dans la boutique :)
             MyAdapter.nbreProduit = 0;
-            Intent intent = new Intent(this, GestionProduit.class);
+
+            //On lance le fragment Accueil
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         super.onRestart();
