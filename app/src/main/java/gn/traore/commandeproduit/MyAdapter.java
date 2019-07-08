@@ -120,8 +120,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             nomView.setText(produit.getNom());
             cardPrix.setText(String.valueOf(produit.getPrix()) + " FCFA");
             //On réccupère l'image du produit
-            //new ApiGetImage(context, imageView).execute(produit.getImage());
-            imageView.setImageResource(R.drawable.creme_lavante_hypoallergenique_pour_les_mains);
+            new ApiGetImage(context, imageView).execute(produit.getImage());
         }
 
     }

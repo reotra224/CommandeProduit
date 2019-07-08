@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import gn.traore.commandeproduit.apis.ApiGetImage;
 import gn.traore.commandeproduit.model.Produit;
 import gn.traore.commandeproduit.model.ProduitPanier;
 
@@ -94,8 +95,8 @@ public class MyAdapterPanier extends RecyclerView.Adapter<MyAdapterPanier.ViewHo
         public void bind(ProduitPanier p) {
             nomProduitPanier.setText(p.getProduit_panier().getNom());
             prixProduitPanier.setText("Prix: " + String.valueOf(p.getProduit_panier().getPrix()) + " CFA");
-            //imgProduitPanier.setImageResource(p.getProduit_panier().getImage());
-            imgProduitPanier.setImageResource(R.drawable.creme_lavante_hypoallergenique_pour_les_mains);
+            //On réccupère l'image du produit
+            new ApiGetImage(context, imgProduitPanier).execute(p.getProduit_panier().getImage());
             qteProduitPanier.setText("Quantité: " + String.valueOf(p.getQuantite_produit_panier()));
         }
     }

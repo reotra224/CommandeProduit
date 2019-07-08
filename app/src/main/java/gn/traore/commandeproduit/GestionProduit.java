@@ -88,7 +88,7 @@ public class GestionProduit extends AppCompatActivity {
                             jsonObject.getInt("stock"),
                             jsonObject.getString("description"),
                             jsonObject.getDouble("prix"),
-                            jsonObject.getString("stock")
+                            jsonObject.getString("image")
                     ));
                 }
             } catch (Exception e) {
@@ -160,6 +160,7 @@ public class GestionProduit extends AppCompatActivity {
      * @param produitPaniers les produits du panier
      */
     private void calculMontantTotal(@NonNull List<ProduitPanier> produitPaniers) {
+        mntTotalPanier = 0.0;
         for (ProduitPanier prod : produitPaniers) {
             // On calcul le total de chaque produit et on l'ajoute au Montant
             // total du panier

@@ -170,6 +170,7 @@ public class Panier extends AppCompatActivity {
      * @param produitPaniers les produits du panier
      */
     private void calculMontantTotal(@NonNull List<ProduitPanier> produitPaniers) {
+        mntTotalPanier = 0.0;
         for (ProduitPanier prod : produitPaniers) {
             // On calcul le total de chaque produit et on l'ajoute au Montant
             // total du panier

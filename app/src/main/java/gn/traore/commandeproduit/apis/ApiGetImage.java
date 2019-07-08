@@ -25,7 +25,8 @@ public class ApiGetImage extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
 
         //On forme l'url de l'image
-        String linkImage = "http://www.tech.3s7.org/images/produits/" + objects[0];
+        String linkImage = "http://www.3s7.org/tech/images/produits/" + objects[0];
+        //String linkImage = "http://www.3s7.org/tech/images/produits/rt_rt_index.jpg";
 
         //On recupère l'image
         try {
@@ -40,7 +41,7 @@ public class ApiGetImage extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         Bitmap bitmap = (Bitmap) o;
-        Toast.makeText(context, String.valueOf(bitmap), Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, String.valueOf(bitmap), Toast.LENGTH_LONG).show();
         imageView.setImageBitmap(bitmap);
     }
 }
