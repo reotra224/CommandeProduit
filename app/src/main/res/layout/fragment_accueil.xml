@@ -7,6 +7,7 @@
     android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical"
+    android:paddingBottom="100dp"
     tools:context=".AccueilFragment">
 
     <TextView
