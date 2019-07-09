@@ -124,7 +124,6 @@ public class ApiInscription extends AsyncTask {
                 AccueilFragment accueilFragment = AccueilFragment.getInstance(phoneToken);
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, accueilFragment)
-                        .addToBackStack(null)
                         .commit();
 
             } catch (FileNotFoundException e) {

@@ -167,4 +167,11 @@ public class GestionProduit extends AppCompatActivity {
             mntTotalPanier += prod.getQuantite_produit_panier() * prod.getProduit_panier().getPrix();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

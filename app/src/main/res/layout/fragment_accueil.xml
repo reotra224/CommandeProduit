@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Accueil"
-        android:textColor="#000"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="50sp"
         android:textStyle="bold"
         android:typeface="monospace"
@@ -24,7 +25,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:orientation="horizontal">
 
         <Button
@@ -92,5 +93,12 @@
             android:background="@drawable/sante" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@drawable/exit" />
 
 </LinearLayout>

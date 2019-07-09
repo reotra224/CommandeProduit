@@ -17,8 +17,8 @@ public class YoutubeActivity extends AppCompatActivity {
 
         int screenWidth = this.getResources().getDisplayMetrics().widthPixels;
 
-        String frameVideo = "<html><body>Video From YouTube<br><iframe width=\"950\" height=\"1500\" src=\"https://www.youtube.com/channel/UCHbVKH_bkCNXCodTYbaWVNQ/about\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
-        //String utl = "https://www.youtube.com/channel/UCHbVKH_bkCNXCodTYbaWVNQ/about";
+        String frameVideo = "<html><body>Video From YouTube<br><iframe width=\"950\" height=\"1500\" src=\"https://www.youtube.com/embed/M2Yza-GUlic\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
+        String url = "https://www.youtube.com/channel/UCHbVKH_bkCNXCodTYbaWVNQ/about";
         WebView myWebView = findViewById(R.id.mWebView);
         myWebView.setLayoutParams(new RelativeLayout.LayoutParams(screenWidth, ViewGroup.LayoutParams.MATCH_PARENT));
 
@@ -28,5 +28,6 @@ public class YoutubeActivity extends AppCompatActivity {
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.loadData(frameVideo, "text/html", "utf-8");
+        //myWebView.loadUrl(url);
     }
 }

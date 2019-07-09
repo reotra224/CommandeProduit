@@ -26,8 +26,6 @@ import gn.traore.commandeproduit.apis.ApiCommande;
 import gn.traore.commandeproduit.model.ProduitDTO;
 import gn.traore.commandeproduit.model.ProduitPanier;
 
-import static gn.traore.commandeproduit.MainActivity.fragmentManager;
-
 public class Panier extends AppCompatActivity {
 
     private static TextView txViewMntTotal;
@@ -86,6 +84,7 @@ public class Panier extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                                 //On néttoie le panier
                                 Panier.nettoyerPanier(Panier.this);
+                                finish();
                             }
                         })
                         .setNegativeButton("NON", new DialogInterface.OnClickListener() {
@@ -121,6 +120,7 @@ public class Panier extends AppCompatActivity {
                     //On envoie les commandes à l'API
                     new ApiCommande(Panier.this, phone, 1)
                             .execute(produitDtoJson, token);
+                    finish();
                 }
             }
         });
@@ -134,10 +134,11 @@ public class Panier extends AppCompatActivity {
             // S'il n'y a plus de produit dans le panier
             // On retourne dans la boutique :)
             MyAdapter.nbreProduit = 0;
+            MyAdapter.paniers.clear();
 
-            //On lance le fragment Accueil
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            //On envoie les commandes à l'API
+            new ApiCommande(this, phone, 0).execute(token);
+            finish();
         }
         super.onRestart();
     }

@@ -1,9 +1,10 @@
 package gn.traore.commandeproduit;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,14 +13,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FermerApplication {
 
     private boolean inscriptionOK;
     private ArrayList<String> data = new ArrayList<>();
     public static FragmentManager fragmentManager;
+    private long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,25 +94,29 @@ public class MainActivity extends AppCompatActivity {
             AccueilFragment accueilFragment = AccueilFragment.getInstance(identifiants);
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, accueilFragment)
-                    .addToBackStack(null)
                     .commit();
         }
         else {
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, new LoginFragment())
-                    .addToBackStack(null)
                     .commit();
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onBackPressed() {
-
-        int count = fragmentManager.getBackStackEntryCount();
-        if (count == 0) {
-            super.onBackPressed();
-        } else {
-            fragmentManager.popBackStack();
-        }
+    public void fermer() {
+        this.finishAffinity();
+        finish();
     }
+
+    /*@Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 < System.currentTimeMillis()) {
+            Toast.makeText(this, "Appuyer sur le bouton Rouge pour quitter !", Toast.LENGTH_SHORT).show();
+        } else {
+            fermer();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }*/
 }

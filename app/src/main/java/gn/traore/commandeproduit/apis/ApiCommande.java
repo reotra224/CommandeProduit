@@ -162,6 +162,7 @@ public class ApiCommande extends AsyncTask {
 
                 // On vide le panier
                 Panier.nettoyerPanier(context);
+
             }
         }
     }

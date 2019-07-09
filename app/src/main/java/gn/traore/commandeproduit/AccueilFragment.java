@@ -30,7 +30,9 @@ import static gn.traore.commandeproduit.MainActivity.fragmentManager;
 public class AccueilFragment extends Fragment {
 
     private ArrayList<String> identifiants;
-    private Button btnListProduits, btnReglages, btnPanier, btnYoutube, btnSupports, btnSante;
+    private Button btnListProduits, btnReglages, btnPanier, btnYoutube,
+            btnSupports, btnSante, btnClose;
+    private FermerApplication fermerApplication;
 
     public AccueilFragment() {
         // Required empty public constructor
@@ -62,6 +64,8 @@ public class AccueilFragment extends Fragment {
         btnSante = view.findViewById(R.id.btnSante);
         btnSupports = view.findViewById(R.id.btnSupports);
         btnYoutube = view.findViewById(R.id.btnYoutube);
+        btnClose = view.findViewById(R.id.btnClose);
+        fermerApplication = (FermerApplication) getActivity();
 
         //On récupère les identifiants
         Bundle args = getArguments();
@@ -72,6 +76,7 @@ public class AccueilFragment extends Fragment {
 
         //On ajoute les évenements sur les boutons
         ajouterEventSurBoutons(view);
+
     }
 
     /**
@@ -144,6 +149,13 @@ public class AccueilFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), YoutubeActivity.class);
                 view.getContext().startActivity(intent);
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fermerApplication.fermer();
             }
         });
     }
