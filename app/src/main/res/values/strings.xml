@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">Commande Produit</string>
+    <string name="app_name">3S7 TECH</string>
     <string name="btn_commander">COMMANDER</string>
+    <string name="btn_annuler">ANNULER</string>
+    <string name="btn_inscrire">S\'inscrire</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="strInscription">INSCRIPTION</string>
+    <string name="strNom">Nom</string>
+    <string name="strPrenom">Prénom</string>
+    <string name="strEmail">E-mail</string>
+    <string name="strPhone">Téléphone</string>
+    <string name="strAdresse">Adresse</string>
+    <string name="strAgent">Agent</string>
+    <string name="tvCommercial">COMMERCIAL</string>
+    <string name="tvSupport">SUPPORT</string>
+    <string name="tvSav">SAV</string>
+    <string name="btn_suivante">Suivante</string>
+    <string name="btn_precedente">Précédente</string>
 </resources>

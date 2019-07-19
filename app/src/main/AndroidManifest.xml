@@ -3,15 +3,19 @@
     package="gn.traore.commandeproduit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icone_3s7"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icone_3s7_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Panier"></activity>
+        <activity android:name=".YoutubeActivity" />
+        <activity android:name=".SupportActivity" />
+        <activity android:name=".GestionProduit" />
+        <activity android:name=".Panier" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
     tools:context=".Panier">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPanier"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/mntTotalPanier"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:background="@color/cardview_light_background"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/colorAccent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/btnAnnulerPanier"
+            style="@android:style/Animation.Toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mntTotalPanier"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/colorPrimaryLight"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/btn_annuler"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnCommandePanier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mntTotalPanier"
+            android:layout_toRightOf="@id/btnAnnulerPanier"
+            android:background="@color/colorAccent"
+            android:focusable="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/btn_commander"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>
