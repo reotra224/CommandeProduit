@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import gn.traore.commandeproduit.apis.ApiCommande;
+import gn.traore.commandeproduit.apis.ApiVideo;
 import gn.traore.commandeproduit.model.Client;
 
 import static gn.traore.commandeproduit.MainActivity.fragmentManager;
@@ -147,8 +148,8 @@ public class AccueilFragment extends Fragment {
         btnYoutube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), YoutubeActivity.class);
-                view.getContext().startActivity(intent);
+                //On récupère les id des videos à lancer depuis le BACK
+                new ApiVideo(view.getContext()).execute(identifiants.get(1));
             }
         });
 

@@ -16,4 +16,6 @@
     <string name="tvCommercial">COMMERCIAL</string>
     <string name="tvSupport">SUPPORT</string>
     <string name="tvSav">SAV</string>
+    <string name="btn_suivante">Suivante</string>
+    <string name="btn_precedente">Précédente</string>
 </resources>
