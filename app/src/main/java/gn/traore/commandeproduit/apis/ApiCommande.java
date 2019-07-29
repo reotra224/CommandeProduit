@@ -161,7 +161,7 @@ public class ApiCommande extends AsyncTask {
                         Toast.LENGTH_SHORT).show();
 
                 // On vide le panier
-                Panier.nettoyerPanier(context);
+                Panier.nettoyerPanier(context, phone, token);
 
             }
         }

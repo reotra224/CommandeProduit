@@ -83,7 +83,7 @@ public class Panier extends AppCompatActivity {
                                 Toast.makeText(Panier.this, "Commande annulée avec succèss ",
                                         Toast.LENGTH_SHORT).show();
                                 //On néttoie le panier
-                                Panier.nettoyerPanier(Panier.this);
+                                Panier.nettoyerPanier(Panier.this, phone, token);
                                 finish();
                             }
                         })
@@ -144,7 +144,9 @@ public class Panier extends AppCompatActivity {
     }
 
     private static void afficheMontantTotalDuPanier(Double mntTotal) {
-        txViewMntTotal.setText(String.valueOf(mntTotal) + " CFA");
+        if (txViewMntTotal != null) {
+            txViewMntTotal.setText(String.valueOf(mntTotal) + " CFA");
+        }
     }
 
     /**
@@ -213,7 +215,7 @@ public class Panier extends AppCompatActivity {
      * Methode permettant de nettoyer le panier.
      * @param context le context à partir duquel elle sera appellée.
      */
-    public static void nettoyerPanier(Context context) {
+    public static void nettoyerPanier(Context context, String phone, String token) {
         //On vide la liste des produits du panier et de l'adapter
         produitPaniers.clear();
         MyAdapter.paniers.clear();
