@@ -31,7 +31,7 @@ public class SupportActivity extends AppCompatActivity {
         btnCom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = "+221776434558";
+                String phone = "+221777099332";
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 context.startActivity(intent);
             }
@@ -47,7 +47,7 @@ public class SupportActivity extends AppCompatActivity {
         btnSav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = "+221773697078";
+                String phone = "+221773271173";
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 context.startActivity(intent);
             }
